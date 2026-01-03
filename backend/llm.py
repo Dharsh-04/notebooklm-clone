@@ -3,7 +3,8 @@ import json
 import csv
 import numpy as np
 from io import BytesIO, StringIO
-
+from dotenv import load_dotenv
+load_dotenv()
 import PyPDF2
 from docx import Document
 import markdown2
@@ -13,7 +14,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from groq import Groq
 
 # Load LLM client
-client = Groq(api_key="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")
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 # Load embedding model
 embedder = SentenceTransformer("all-MiniLM-L6-v2")
